@@ -1,0 +1,16 @@
+{
+  "name": "05-weather-app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "author": "Sergio_Mir",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.0.0",
+    "yargs": "^17.7.2"
+  }
+}
