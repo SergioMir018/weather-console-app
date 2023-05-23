@@ -13,7 +13,7 @@ const main = async() => {
                 const city = await readInput('City: ');
                 await search.findCity(city);
                 break;
-            case '2':
+            case 2:
                 break;
         }
 
