@@ -50,6 +50,8 @@ const pause = async(option) => {
 
     console.log(`\n`)
     await inquirer.prompt(question);
+
+    return option;
 }
 
 const readInput = async(message) => {

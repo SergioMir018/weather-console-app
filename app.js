@@ -1,4 +1,4 @@
-const {inquirerMenu, pause} = require('./helpers/inquirer');
+const {inquirerMenu, pause, readInput} = require('./helpers/inquirer');
 const Search = require('./models/search');
 
 const main = async() => {
@@ -9,9 +9,11 @@ const main = async() => {
         opt = await inquirerMenu();
 
         switch (opt) {
-            case 1:
+            case '1':
+                const city = await readInput('City: ');
+                await search.findCity(city);
                 break;
-            case 2:
+            case '2':
                 break;
         }
 
