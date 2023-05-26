@@ -11,7 +11,11 @@ const main = async() => {
         switch (opt) {
             case '1':
                 const city = await readInput('City: ');
-                await search.findCity(city);
+                if (city) {
+                    let data = await
+                    search.findCity(city);
+                    console.log(data)
+                }
                 break;
             case 2:
                 break;
