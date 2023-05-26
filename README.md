@@ -26,7 +26,7 @@ Then shows a number of coincidences with the search term
   5.  Madridejos, Toledo, Spain
 ```
 
-And after a selection it show the current weather information of the selected place
+And after a selection it shows the current weather information of the selected place
 
 ```
 ? City:  Madrid
