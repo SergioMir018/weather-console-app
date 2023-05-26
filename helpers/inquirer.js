@@ -103,9 +103,24 @@ const matchPlaces = async(places = []) => {
     return id;
 }
 
+const confirm = async(message) => {
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ];
+
+    const {ok} = await inquirer.prompt(question);
+
+    return ok;
+}
+
 module.exports = {
     inquirerMenu,
     pause,
     readInput,
-    matchPlaces
+    matchPlaces,
+    confirm,
 }

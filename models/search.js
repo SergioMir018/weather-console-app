@@ -32,6 +32,18 @@ class Search {
             return [];
         }
     }
+
+    selectedPlaceInfo = async(id, places) => {
+        places.forEach(place => {
+            if(place.id === id.toString()) {
+                console.log('\n');
+                console.log(`${'====='.green} Selected place info: ${'====='.green}`);
+                console.log(`Name: ${place.name}`);
+                console.log(`Lng: ${place.lng}`);
+                console.log(`Lat: ${place.lat}`);
+            }
+        });
+    }
 }
 
 module.exports = Search;

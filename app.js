@@ -15,7 +15,8 @@ const main = async() => {
                 const city = await readInput('City: ');
                 if (city) {
                     const data = await search.findCity(city);
-                    await matchPlaces(data);
+                    const selectedPlace = await matchPlaces(data);
+                    await search.selectedPlaceInfo(selectedPlace, data);
                 }
                 break;
             case 2:
