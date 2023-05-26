@@ -74,86 +74,38 @@ const readInput = async(message) => {
     return desc;
 }
 
-const listDeletingTask = async(tasks = []) => {
-    const choices = tasks.map((task, i) => {
+const matchPlaces = async(places = []) => {
+    const matchingPlaces = places.map((place, i) => {
         const index = `${i + 1}. `.green;
 
         return {
-            value: task.id,
-            name: `${index} ${task.desc}`
+            value: place.id,
+            name: `${index} ${place.name}`
         }
     });
 
-    choices.unshift ({
+    matchingPlaces.unshift ({
         value: '0',
         name: '0.'.green + ' Cancel'
     });
 
-    const deleteList = [
+    const matchPlacesList = [
         {
             type: 'checkbox',
             name: 'id',
-            message: 'Delete',
-            choices
+            message: 'Select: ',
+            choices: matchingPlaces
         }
     ];
 
-    const {id} = await inquirer.prompt(deleteList);
+    const {id} = await inquirer.prompt(matchPlacesList);
 
     return id;
-}
-
-const confirm = async(message) => {
-    const question = [
-        {
-            type: 'confirm',
-            name: 'ok',
-            message
-        }
-    ];
-
-    const {ok} = await inquirer.prompt(question);
-
-    return ok;
-}
-
-const completeTasksCheck = async(tasks = []) => {
-    const choices = tasks
-                        .filter(task => !task.completed)
-                        .map((task, i) => {
-                            const index = `${i + 1}. `.green;
-
-                            return {
-                                value: task.id,
-                                name: `${index} ${task.desc}`,
-                                checked: false
-                            }
-                        });
-
-    choices.unshift ({
-        value: '0',
-        name: '0.'.green + ' Cancel'
-    });
-
-    const completeList = [
-        {
-            type: 'checkbox',
-            name: 'ids',
-            message: 'Select',
-            choices
-        }
-    ];
-
-    const {ids} = await inquirer.prompt(completeList);
-
-    return ids;
 }
 
 module.exports = {
     inquirerMenu,
     pause,
     readInput,
-    listDeletingTask,
-    confirm,
-    completeTasksCheck
+    matchPlaces
 }

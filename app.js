@@ -1,4 +1,6 @@
-const {inquirerMenu, pause, readInput} = require('./helpers/inquirer');
+require('dotenv').config();
+
+const {inquirerMenu, pause, readInput, matchPlaces} = require('./helpers/inquirer');
 const Search = require('./models/search');
 
 const main = async() => {
@@ -12,9 +14,8 @@ const main = async() => {
             case '1':
                 const city = await readInput('City: ');
                 if (city) {
-                    let data = await
-                    search.findCity(city);
-                    console.log(data)
+                    const data = await search.findCity(city);
+                    await matchPlaces(data);
                 }
                 break;
             case 2:
