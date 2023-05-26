@@ -16,7 +16,20 @@ const main = async() => {
                 if (city) {
                     const data = await search.findCity(city);
                     const selectedPlace = await matchPlaces(data);
-                    await search.selectedPlaceInfo(selectedPlace, data);
+                    const foundPlace = data.find( place => place.id === selectedPlace);
+
+                    const weather = await search.placeWeather(foundPlace.lat, foundPlace.lng);
+
+                    console.log('\n');
+                    console.log(`${'====='.green} Selected place info: ${'====='.   green}`);
+                    console.log(`Name: ${foundPlace.name}`);
+                    console.log(`Lng: ${foundPlace.lng}`);
+                    console.log(`Lat: ${foundPlace.lat}`);
+                    console.log(`Avg Temp: ${weather.avgTemp}`);
+                    console.log(`Min Temp: ${weather.minTemp}`);
+                    console.log(`Max Temp: ${weather.maxTemp}`);
+                    console.log(`Humidity: ${weather.humidity}`);
+                    console.log(`Current Weather: ${weather.desc}`);
                 }
                 break;
             case 2:
