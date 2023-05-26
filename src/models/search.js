@@ -34,15 +34,13 @@ class Search {
     }
 
     selectedPlaceInfo = async(id, places) => {
-        places.forEach(place => {
-            if(place.id === id.toString()) {
-                console.log('\n');
-                console.log(`${'====='.green} Selected place info: ${'====='.green}`);
-                console.log(`Name: ${place.name}`);
-                console.log(`Lng: ${place.lng}`);
-                console.log(`Lat: ${place.lat}`);
-            }
-        });
+        const foundPlace = places.find( place => place.id === id);
+
+        console.log('\n');
+        console.log(`${'====='.green} Selected place info: ${'====='.green}`);
+        console.log(`Name: ${foundPlace.name}`);
+        console.log(`Lng: ${foundPlace.lng}`);
+        console.log(`Lat: ${foundPlace.lat}`);
     }
 }
 
