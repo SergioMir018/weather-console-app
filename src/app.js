@@ -13,13 +13,20 @@ const main = async() => {
         switch (opt) {
             case '1':
                 const city = await readInput('City: ');
+                
                 if (city) {
                     const data = await search.findCity(city);
                     const selectedPlace = await matchPlaces(data);
+                    
+                    if(selectedPlace === '0') continue;
+                    
                     const foundPlace = data.find( place => place.id === selectedPlace);
+
+                    search.addToHistory(foundPlace.name);
 
                     const weather = await search.placeWeather(foundPlace.lat, foundPlace.lng);
 
+                    console.clear();
                     console.log('\n');
                     console.log(`${'====='.green} Selected place info: ${'====='.   green}`);
                     console.log(`Name: ${foundPlace.name}`);
@@ -32,7 +39,11 @@ const main = async() => {
                     console.log(`Current Weather: ${weather.desc}`);
                 }
                 break;
-            case 2:
+            case '2':
+                search.history.forEach((place, i) => {
+                    const indx = `${i + 1}.`.green;
+                    console.log(`${indx} ${place}`);
+                });
                 break;
         }
 

@@ -1,8 +1,11 @@
 const axios = require('axios');
 
 class Search {
-    constructor (history) {
-
+    
+    history = [];
+    
+    constructor () {
+        
     }
 
     getParamsMapbox() {
@@ -61,6 +64,17 @@ class Search {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    addToHistory( place = '') {
+
+        if(this.history.includes(place)){
+            return;
+        } else {
+            this.history.unshift(place)
+        }
+
+        
     }
 }
 
