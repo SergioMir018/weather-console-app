@@ -91,7 +91,7 @@ const matchPlaces = async(places = []) => {
 
     const matchPlacesList = [
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'id',
             message: 'Select: ',
             choices: matchingPlaces
