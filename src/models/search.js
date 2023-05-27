@@ -1,8 +1,11 @@
+const fs = require('fs');
+
 const axios = require('axios');
 
 class Search {
     
     history = [];
+    databasePath = '../database/database.js';
     
     constructor () {
         
@@ -71,10 +74,25 @@ class Search {
         if(this.history.includes(place)){
             return;
         } else {
+            this.history = this.history.splice(0,5)
             this.history.unshift(place)
+            this.saveInDB(this.history);
+        }
+    }
+
+    saveInDB(data) {
+        fs.writeFileSync(this.databasePath, JSON.stringify(data));
+    }
+
+    loadDB() {
+        if(!fs.existsSync(this.databasePath)) {
+        return null;
         }
 
-        
+        const loadedData = fs.readFileSync(this.databasePath, {encoding: 'utf-8'});
+        const formattedData = JSON.parse(loadedData);
+
+        this.history = formattedData.history;
     }
 }
 

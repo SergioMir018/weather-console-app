@@ -7,6 +7,8 @@ const main = async() => {
     let opt = '';
     const search = new Search();
 
+    search.loadDB();
+
     do {
         opt = await inquirerMenu();
 
